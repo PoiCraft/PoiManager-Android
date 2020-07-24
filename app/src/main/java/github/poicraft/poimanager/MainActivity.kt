@@ -61,11 +61,21 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
-                    super.onClosed(webSocket, code, reason)
+                    Log.d("ws", "stop")
                     runOnUiThread {
                         fab.show()
                         cmd_send.visibility = View.GONE
                     }
+                    super.onClosed(webSocket, code, reason)
+                }
+
+                override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
+                    Log.d("ws", "stop2")
+                    runOnUiThread {
+                        fab.show()
+                        cmd_send.visibility = View.GONE
+                    }
+                    super.onClosing(webSocket, code, reason)
                 }
 
                 override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
