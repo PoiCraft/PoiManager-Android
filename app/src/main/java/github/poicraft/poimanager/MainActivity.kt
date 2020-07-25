@@ -135,8 +135,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         cmd_send.setOnClickListener {
-            wsClient.send(cmd_in.text.toString())
-            cmd_in.text.clear()
+            if (cmd_in.text.isNotEmpty()){
+                wsClient.send(cmd_in.text.toString())
+                cmd_in.text.clear()
+            }
         }
         }
     }
