@@ -2,19 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main_root"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:paddingTop="@dimen/fab_margin"
-    android:paddingBottom="@dimen/fab_margin">
+    android:background="@color/background"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/server_config"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:id="@+id/server_config"
+        app:cardBackgroundColor="@color/background_card"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        app:cardElevation="0dp"
         tools:ignore="MissingConstraints">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +27,7 @@
 
             <TextView
                 android:id="@+id/textView"
+                android:textColor="@color/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -36,6 +40,8 @@
 
             <EditText
                 android:id="@+id/server_address"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color_hint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -52,6 +58,8 @@
 
             <EditText
                 android:id="@+id/server_token"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color_hint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
@@ -72,8 +80,10 @@
         android:id="@+id/server_log"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/background_card"
         app:layout_constraintBottom_toTopOf="@+id/server_cmd"
         app:layout_constraintEnd_toEndOf="@+id/server_config"
         app:layout_constraintStart_toStartOf="@+id/server_config"
@@ -90,8 +100,11 @@
         android:id="@+id/server_cmd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/fab_margin"
+
+        app:cardElevation="0dp"
+        android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:cardBackgroundColor="@color/background_card"
         app:layout_constraintEnd_toEndOf="@+id/server_config"
         app:layout_constraintStart_toStartOf="@+id/server_config">
 
@@ -101,6 +114,8 @@
 
             <EditText
                 android:id="@+id/cmd_in"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color_hint"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
