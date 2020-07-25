@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             wsClient.close(101, ' '.toString())
         }catch (e: Exception){ }
         wsClient = Http.ws(
-            host = "${findViewById<EditText>(R.id.server_address).text.toString()}/api/ws/cmd",
+            host = "${server_address.text}/api/ws/cmd",
             listener = object : WebSocketListener() {
                 override fun onOpen(webSocket: WebSocket, response: Response) {
                     webSocket.send("{\"token\":\"${server_token.text}\"}")
@@ -44,10 +44,25 @@ class MainActivity : AppCompatActivity() {
                         edit.putString("address", server_address.text.toString())
                         edit.putString("token", server_token.text.toString())
                         edit.apply()
-                        runOnUiThread {
-                            fab.hide()
-                            cmd_send.visibility = View.VISIBLE
-                        }
+                        Http.get("http://${server_address.text}/api/log/all?token=${server_token.text}",{ _, response ->
+                            val logs = JSONObject(response.body!!.string()).getJSONArray("content")
+                            for (i in 0 until logs.length()){
+                                val log = logs.getJSONObject(i)
+                                runOnUiThread {
+                                    adapter.addLog(
+                                        MLog(
+                                            log_msg = log.getString("log"),
+                                            log_type = log.getString("type")
+                                        )
+                                    )
+                                }
+                            }
+                            runOnUiThread {
+                                fab.hide()
+                                cmd_send.visibility = View.VISIBLE
+                                log_out.scrollToPosition(adapter.itemCount - 1)
+                            }
+                        })
                     }
                     runOnUiThread {
                         adapter.addLog(
@@ -56,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                                 log_type = msg.getString("type")
                             )
                         )
+                        log_out.scrollToPosition(adapter.itemCount - 1)
                     }
 
                 }
@@ -87,6 +103,7 @@ class MainActivity : AppCompatActivity() {
                                 log_msg = t.message.toString()
                             )
                         )
+                        log_out.scrollToPosition(adapter.itemCount - 1)
                     }
                 }
             }

@@ -21,6 +21,8 @@
             android:id="@+id/log_msg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="11" />
+            android:layout_weight="11"
+            android:autoLink="all"
+            android:textIsSelectable="true" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

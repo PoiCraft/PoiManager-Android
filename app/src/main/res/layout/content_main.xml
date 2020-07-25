@@ -4,139 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+    android:id="@+id/main_root"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:paddingTop="@dimen/fab_margin"
+    android:paddingBottom="@dimen/fab_margin">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/fab_margin">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:id="@+id/server_config"
+        tools:ignore="MissingConstraints">
 
-        <androidx.cardview.widget.CardView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/fab_margin"
-            android:layout_marginTop="@dimen/fab_margin"
-            android:layout_marginRight="@dimen/fab_margin">
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/fab_margin">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_server" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="6"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/server_address"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:hint="@string/server_address_hint"
-                            android:importantForAutofill="no"
-                            android:inputType="text" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/server_token"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:hint="@string/server_token_hint"
-                            android:importantForAutofill="no"
-                            android:inputType="textPassword" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/fab_margin"
-            android:layout_marginTop="@dimen/fab_margin"
-            android:layout_marginRight="@dimen/fab_margin">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/cmd_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9"
-                    android:ems="10"
-                    android:hint="@string/cmd_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="textPersonName" />
-
-                <ImageButton
-                    android:id="@+id/cmd_send"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/send_button"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_baseline_send_24_dark" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/fab_margin"
-            android:layout_marginTop="@dimen/fab_margin"
-            android:layout_marginRight="@dimen/fab_margin">
-
-            <Button
-                android:id="@+id/view_log"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/view_log" />
-        </androidx.cardview.widget.CardView>
+                android:layout_marginTop="6dp"
+                android:text="@string/setting_server"
+                app:layout_constraintBottom_toTopOf="@+id/server_address"
+                app:layout_constraintStart_toStartOf="@+id/server_address"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+
+            <EditText
+                android:id="@+id/server_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginBottom="6dp"
+                android:ems="10"
+                android:hint="@string/server_address_hint"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/server_token"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+            <EditText
+                android:id="@+id/server_token"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:ems="10"
+                android:hint="@string/server_token_hint"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                app:layout_constraintBaseline_toBaselineOf="@+id/server_address"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/server_address" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/server_log"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
+        app:layout_constraintBottom_toTopOf="@+id/server_cmd"
+        app:layout_constraintEnd_toEndOf="@+id/server_config"
+        app:layout_constraintStart_toStartOf="@+id/server_config"
+        app:layout_constraintTop_toBottomOf="@id/server_config">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/log_out"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/fab_margin"
-            android:layout_marginTop="@dimen/fab_margin"
-            android:layout_marginRight="@dimen/fab_margin" />
+            android:layout_margin="6dp" />
+    </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/server_cmd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fab_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/server_config"
+        app:layout_constraintStart_toStartOf="@+id/server_config">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/cmd_in"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginBottom="6dp"
+                android:ems="10"
+                android:hint="@string/cmd_hint"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cmd_send"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageButton
+                android:id="@+id/cmd_send"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/send_button"
+                android:visibility="gone"
+                app:layout_constraintBaseline_toBaselineOf="@id/cmd_in"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_baseline_send_24_dark" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
