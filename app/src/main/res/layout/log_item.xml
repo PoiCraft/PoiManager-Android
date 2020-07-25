@@ -21,7 +21,6 @@
         <TextView
             android:id="@+id/log_msg"
             android:textColor="@color/text_color"
-            android:textColorHighlight="@color/text_color"
             android:textColorLink="@color/text_color"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
