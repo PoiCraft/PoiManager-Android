@@ -103,6 +103,8 @@ class MainActivity : AppCompatActivity() {
                                 log_msg = t.message.toString()
                             )
                         )
+                        fab.show()
+                        cmd_send.visibility = View.GONE
                         log_out.scrollToPosition(adapter.itemCount - 1)
                     }
                 }
