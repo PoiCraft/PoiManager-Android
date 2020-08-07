@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "poicraft.github.poimanager"
+        applicationId "github.poicraft.poimanager"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
