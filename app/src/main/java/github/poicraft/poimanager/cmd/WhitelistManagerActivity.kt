@@ -27,7 +27,7 @@ class WhitelistManagerActivity : AppCompatActivity() {
         builder.setView(input)
 
         builder.setPositiveButton(R.string.tile_whitelist_add){ _, _ ->
-            sendCommand(serverAddress, serverToken, "whitelist add ${input.text}", 1){ _, result ->
+            sendCommand(serverAddress, serverToken, "whitelist add \"${input.text}\"", 1){ _, result ->
                 runOnUiThread{
                     builder2.setMessage(result.getJSONObject(0).getString("log"))
                     val dialog2 = builder2.create()
@@ -36,7 +36,7 @@ class WhitelistManagerActivity : AppCompatActivity() {
             }
         }
         builder.setNegativeButton(R.string.tile_whitelist_remove){ _, _ ->
-            sendCommand(serverAddress, serverToken, "whitelist remove ${input.text}", 1){ _, result ->
+            sendCommand(serverAddress, serverToken, "whitelist remove \"${input.text}\"", 1){ _, result ->
                 runOnUiThread{
                     builder2.setMessage(result.getJSONObject(0).getString("log"))
                     val dialog2 = builder2.create()
