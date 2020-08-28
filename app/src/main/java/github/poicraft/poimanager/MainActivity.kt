@@ -1,10 +1,13 @@
 package github.poicraft.poimanager
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import github.gggxbbb.Http
@@ -16,7 +19,7 @@ import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 import org.json.JSONObject
-import java.lang.Exception
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -117,13 +120,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
+        /*
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (!Settings.canDrawOverlays(this)) {
+                val intent = Intent(
+                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:$packageName")
+                )
+                startActivity(intent)
+            }
+        }
+         */
+
         val recManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         log_out.layoutManager = recManager
 
         adapter = LogAdapter()
         log_out.adapter = adapter
 
-        val sp = getSharedPreferences("server", Context.MODE_PRIVATE)
+        val sp = getSharedPreferences("server", Context.MODE_MULTI_PROCESS)
         server_address.setText(sp.getString("address", ""))
         server_token.setText(sp.getString("token", ""))
 

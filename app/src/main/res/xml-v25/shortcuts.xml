@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_tile_whitelist"
+        android:shortcutId="tile_whitelist"
+        android:shortcutLongLabel="@string/tile_whitelist"
+        android:shortcutShortLabel="@string/tile_whitelist">
+
+    <intent
+        android:action="android.intent.action.VIEW"
+        android:targetClass="github.poicraft.poimanager.cmd.WhitelistManagerActivity"
+        android:targetPackage="github.poicraft.poimanager" />
+    <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>
